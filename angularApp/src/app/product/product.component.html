@@ -1,0 +1,28 @@
+<div class="container p-3 mb-2 bg-dark text-white">
+<h1>{{title}}</h1>
+<h3>Product List</h3>
+<a id="add_btn" class="btn btn-primary" href="products/new">Add New Product</a>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products">
+          <td>{{product._id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.qty}}</td>
+          <td>${{product.price}}</td> 
+          <td>
+            <a class="btn btn-warning" [routerLink]="['/products/edit/' + product._id]">Edit</a>
+            <a class="btn btn-primary" [routerLink]="['/products/' + product._id]">Details</a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+*{
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+h1{
+  text-align: center;
+  color: #000000;
+}
+
+.btn{
+  margin-left: 25px;
+}
+
+th, td{
+  text-align: center;
+}
+#add_btn{
+  margin: 0;
+}
+

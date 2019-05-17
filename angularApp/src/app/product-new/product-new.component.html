@@ -1,0 +1,60 @@
+<div class="container p-3 mb-2 bg-dark text-white">
+  <h1>{{title}}</h1>
+  <h3>New Product</h3>
+  <form #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name
+        <input id="name" name="name" class="form-control"  
+        required minlength="3" 
+        [(ngModel)]="product.name"  
+        #name="ngModel"/>
+        {{product.name}}
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Name is required
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 3 characters long.
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="qty">Qty:
+        <input type="number" name="qty" class="form-control" id="qty" 
+        required 
+        [(ngModel)]="product.qty" 
+        pattern="[0-9]*"
+        #qty="ngModel" />
+        {{product.qty}}
+        <div *ngIf="qty.errors && (qty.dirty || qty.touched)" class="alert alert-danger">
+          <div *ngIf="qty.errors.required">
+            Qty is required.
+          </div>
+          <div *ngIf="qty.errors.pattern">
+            Qty must be equal to or greater than 0.
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:
+        <input type="number" name="price" class="form-control" id="price" 
+        required min="0"
+        [(ngModel)]="product.price"
+        pattern="^\d{0,8}(\.\d{1,2})?$"
+        #price="ngModel" />
+        <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+          <div *ngIf="price.errors.required">
+            Price is required.
+          </div>
+          <div *ngIf="price.errors.pattern">
+            Valid price required and must be equal to or greater than 0.
+          </div>
+        </div>
+      </label>
+    </div>
+      <a class="btn btn-danger" href="/">Cancel</a>
+      <button type="submit" [disabled]="!productForm.form.valid" class="btn btn-primary" (click)="newProduct(); product=''">Create</button>
+  </form>
+</div>
