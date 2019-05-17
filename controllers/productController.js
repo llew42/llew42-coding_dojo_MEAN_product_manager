@@ -32,12 +32,5 @@ module.exports = {
     Product.deleteOne({_id:req.params.id})
     .then(data => res.json(data))
     .catch(data => res.json(data))
-  },
-
-  likeProduct: function(req, res){
-    Product.findByIdAndUpdate({_id:req.params.id},
-    { $inc: {like: 1} })
-    .then(data => res.json(data))
-    .catch(data => res.json(data))
   }
 };
